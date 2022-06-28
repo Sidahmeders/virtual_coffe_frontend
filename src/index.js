@@ -1,5 +1,5 @@
-import { StrictMode } from 'react'
-import ReactDOM from 'react-dom'
+import { createRoot } from 'react-dom/client'
+import { BrowserRouter } from 'react-router-dom'
 import App from './App'
 import * as serviceWorker from './serviceWorkerRegistration'
 import { ContextProvider } from './context'
@@ -25,14 +25,16 @@ const GlobalStyle = createGlobalStyle`
   }
 `
 
-ReactDOM.render(
-    <StrictMode>
-        <ContextProvider>
-            <GlobalStyle />
-            <App />
-        </ContextProvider>
-    </StrictMode>,
-    document.getElementById('root')
+const container = document.getElementById('root')
+const root = createRoot(container)
+
+root.render(
+  <ContextProvider>
+    <GlobalStyle />
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>
+  </ContextProvider>
 )
 
 serviceWorker.register()
