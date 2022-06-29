@@ -1,6 +1,7 @@
 import validateMoves, { clearPieceMovementsHighlight, swapNodes } from './validateMoves.js'
 
 let selectedNode = null
+let targetNode = null
 
 export default function addDragableEvents(nodeElement) {
   // mouse events
@@ -51,21 +52,30 @@ const touchStart = (e) => {
 const touchMove = (e) => {
   const touchLocation = e.changedTouches[0]
   let draggableChessPiece = document.getElementById('draggable-chess-piece')
+
   if (draggableChessPiece === null) {
     draggableChessPiece = document.createElement('img')
     draggableChessPiece.id = 'draggable-chess-piece'
     draggableChessPiece.style = `
-    position: absolute;
-    width: 38px;
+      position: absolute;
+      width: 38px;
     `
   }
+
   draggableChessPiece.src = selectedNode.src
   draggableChessPiece.style.left = touchLocation.pageX - 12 + 'px'
   draggableChessPiece.style.top = touchLocation.pageY - 20 + 'px'
+
+  targetNode = document.elementFromPoint(touchLocation.pageX, touchLocation.pageY)
+
   document.getElementById('chess-app').appendChild(draggableChessPiece)
 }
 
 const touchEnd = (e) => {
-  dragDrop(e)
   dragEnd(e)
+  document.getElementById('draggable-chess-piece')?.remove()
+  const touchLocation = e.changedTouches[0]
+  const [xPosition, yPosition] = [touchLocation.pageX, touchLocation.pageY]
+  targetNode = document.elementFromPoint(xPosition, yPosition)
+  swapNodes(selectedNode, targetNode)
 }

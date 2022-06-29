@@ -88,7 +88,7 @@ export function clearPieceMovementsHighlight() {
 
 export function swapNodes(selectedNode, targetNode) {
   const targetPosition = parseInt(targetNode.getAttribute('position'))
-  const canSwapNodes = boardState.validMoves.includes(targetPosition)
+  const canSwapNodes = boardState.validMoves?.includes(targetPosition)
   boardState.validMoves = []
   if (!canSwapNodes) return
 
