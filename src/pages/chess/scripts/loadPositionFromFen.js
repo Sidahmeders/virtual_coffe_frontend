@@ -40,19 +40,11 @@ function transformFenArray(fenRow) {
   return boardRanks
 }
 
-const styles = {
-  chessPieceStyle: `
-    width: 85%;
-    height: 85%;
-  `
-}
-
 function makePiece(pieceID, position) {
   const IconElement = document.createElement('img')
   IconElement.id = pieceID
   IconElement.setAttribute('position', position)
   IconElement.className = 'chess-piece'
-  IconElement.style = styles.chessPieceStyle
   IconElement.src = pieceID ? `icons/${pieceID}.png` : ' '
   IconElement.onclick = pieceClickHanlder
   addDraggableEvents(IconElement)

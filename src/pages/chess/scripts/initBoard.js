@@ -1,19 +1,3 @@
-const styles = {
-  rowContainerStyle: `
-    display: flex;
-  `,
-  columnStyle: `
-    width: 45px;
-    height: 45px;
-    transform: translateX(-20px);
-    border: 1px solid gray;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: #ddd6;
-  `
-}
-
 export default function initBoard() {
   const boardContainerElement = document.createElement('div')
   boardContainerElement.id = 'board-container'
@@ -23,11 +7,11 @@ export default function initBoard() {
 
   rows.forEach((_, i) => {
     const rowContainerElement = document.createElement('div')
-    rowContainerElement.style = styles.rowContainerStyle
+    rowContainerElement.className = 'board-row'
 
     colums.forEach((_, j) => {
       const columnElement = document.createElement('div')
-      columnElement.style = styles.columnStyle
+      columnElement.className = 'board-column'
 
       if (j === 0) columnElement.innerText = colums[7 - i]
       if (8 - i === 0) columnElement.innerText = rows[j]

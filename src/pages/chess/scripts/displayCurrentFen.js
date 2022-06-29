@@ -1,26 +1,8 @@
-const styles = {
-  fenContainer: `
-    color: red;
-    font-size: 18px;
-    border: 1px solid;
-    border-radius: 2px;
-    padding: 2px 5px;
-    text-align: center;
-  `,
-  copyButton: `
-    border: 1px solid #333;
-    border-radius: 4px;
-    margin-left: 10px;
-    padding: 3px 9px;
-  `
-}
-
 export default function displayCurrentFen(fenState) {
   let fenContainer = document.getElementById('fen-placeholder')
   if (fenContainer === null) {
     fenContainer = document.createElement('div')
     fenContainer.id = 'fen-placeholder'
-    fenContainer.style = styles.fenContainer
   }
   fenContainer.innerHTML = ''
 
@@ -37,7 +19,7 @@ export default function displayCurrentFen(fenState) {
   fenPlaceholderSpan.innerText = updatedFen
 
   const copyFenButton = document.createElement('button')
-  copyFenButton.style = styles.copyButton
+  copyFenButton.className = 'copy-btn'
   copyFenButton.innerText = 'copy'
   copyFenButton.onclick = (event) => {
     const fenString = event.target.parentNode.firstChild.innerText
