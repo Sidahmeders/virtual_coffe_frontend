@@ -1,3 +1,4 @@
+import './styles.css'
 import chessInit from './chessInit'
 
 export default function Chess() {

@@ -3,41 +3,69 @@ import validateMoves, { clearPieceMovementsHighlight, swapNodes } from './valida
 let selectedNode = null
 
 export default function addDragableEvents(nodeElement) {
-  nodeElement.addEventListener('dragstart', dragStart)
-  nodeElement.addEventListener('dragend', dragEnd)
-  nodeElement.addEventListener('dragover', dragOver)
-  nodeElement.addEventListener('dragenter', dragEnter)
-  nodeElement.addEventListener('dragleave', dragLeave)
-  nodeElement.addEventListener('drop', dragDrop)
+  // mouse events
+  nodeElement.ondragstart = dragStart
+  nodeElement.ondragend = dragEnd
+  nodeElement.ondragover = dragOver
+  nodeElement.ondragenter = dragEnter
+  nodeElement.ondragleave = dragLeave
+  nodeElement.ondrop = dragDrop
+  // touchscreen events
+  nodeElement.ontouchstart = touchStart
+  nodeElement.ontouchmove = touchMove
+  nodeElement.ontouchend = touchEnd
 }
 
-function dragStart() {
-  this.classList.add('hold')
-  setTimeout(() => this.classList.add('invisible'), 0)
-  validateMoves(this)
-  selectedNode = this
+const dragStart = (e) => {
+  e.target.classList.add('hold')
+  setTimeout(() => e.target.classList.add('invisible'), 0)
+  validateMoves(e.target)
+  selectedNode = e.target
 }
 
-function dragEnd() {
-  this.classList.remove('invisible')
-  this.classList.remove('hold')
+const dragEnd = (e) => {
+  e.target.classList.remove('invisible')
+  e.target.classList.remove('hold')
   clearPieceMovementsHighlight()
 }
 
-function dragOver(event) {
-  event.preventDefault()
+const dragOver = (e) => e.preventDefault()
+
+const dragEnter = (e) => {
+  e.preventDefault()
+  e.target.classList.add('hovered')
 }
 
-function dragEnter(event) {
-  event.preventDefault()
-  this.classList.add('hovered')
+const dragLeave = (e) => e.target.classList.remove('hovered')
+
+const dragDrop = (e) => {
+  e.target.classList.remove('hovered')
+  swapNodes(selectedNode, e.target)
 }
 
-function dragLeave() {
-  this.classList.remove('hovered')
+const touchStart = (e) => {
+  e.preventDefault()
+  dragStart(e)
 }
 
-function dragDrop() {
-  this.classList.remove('hovered')
-  swapNodes(selectedNode, this)
+const touchMove = (e) => {
+  const touchLocation = e.changedTouches[0]
+  let draggableChessPiece = document.getElementById('draggable-chess-piece')
+  if (draggableChessPiece === null) {
+    draggableChessPiece = document.createElement('img')
+    draggableChessPiece.id = 'draggable-chess-piece'
+    draggableChessPiece.style = `
+    position: absolute;
+    width: 38px;
+    `
+  }
+  draggableChessPiece.src = selectedNode.src
+  draggableChessPiece.style.left = touchLocation.pageX - 12 + 'px'
+  draggableChessPiece.style.top = touchLocation.pageY - 20 + 'px'
+  document.getElementById('chess-app').appendChild(draggableChessPiece)
+}
+
+const touchEnd = (e) => {
+  dragDrop(e)
+  dragEnd(e)
 }

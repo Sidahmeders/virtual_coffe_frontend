@@ -1,16 +1,16 @@
 const styles = {
+  rowContainerStyle: `
+    display: flex;
+  `,
   columnStyle: `
     width: 45px;
-    transform: translateX(-20px);
     height: 45px;
+    transform: translateX(-20px);
     border: 1px solid gray;
     display: flex;
     justify-content: center;
     align-items: center;
     background-color: #ddd6;
-  `,
-  rowContainerStyle: `
-    display: flex;
   `
 }
 
