@@ -1,8 +1,9 @@
 export default function displayCurrentFen(fenState) {
-  let fenContainer = document.getElementById('fen-placeholder')
+  let fenContainer = document.getElementById('fen-container')
   if (fenContainer === null) {
     fenContainer = document.createElement('div')
-    fenContainer.id = 'fen-placeholder'
+    fenContainer.id = 'fen-container'
+    fenContainer.className = 'fen-placeholder'
   }
   fenContainer.innerHTML = ''
 

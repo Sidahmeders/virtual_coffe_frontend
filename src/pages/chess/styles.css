@@ -1,3 +1,10 @@
+#chess-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
 #chess-app {
   user-select: none;
   -webkit-user-drag: none;
@@ -8,13 +15,12 @@
 
 #chess-app .board-row {
   display: flex;
+  justify-content: center;
 }
 
 #chess-app .board-column {
   width: 45px;
   height: 45px;
-  transform: translateX(-20px);
-  border: 1px solid gray;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -38,16 +44,16 @@
   border: 2px solid orange;
 }
 
-#chess-app #fen-placeholder {
+#chess-app .fen-placeholder {
   color: red;
   font-size: 1em;
   border: 1px solid;
   border-radius: 2px;
-  padding: 2px 5px;
+  padding: 4px 12px;
   text-align: center;
 }
 
-#chess-app #fen-placeholder .copy-btn {
+#chess-app .fen-placeholder .copy-btn {
   border: 1px solid #333;
   border-radius: 4px;
   margin-left: 10px;
