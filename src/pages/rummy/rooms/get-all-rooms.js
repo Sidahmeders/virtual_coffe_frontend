@@ -58,7 +58,6 @@ function joinRoomHandler(event) {
 socket.on(roomListeners.rooms_error, errorNotification)
 
 socket.on(roomListeners.rooms_joined, (payload) => {
-  console.log('IN THE MAYHAM')
   const { roomName, username } = payload
-  window.location.href = `/room/${roomName}?username=${username}`
+  window.location.href = `/rummy/room?roomName=${roomName}&username=${username}`
 })

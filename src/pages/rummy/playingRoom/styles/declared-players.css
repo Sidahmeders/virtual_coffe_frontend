@@ -1,0 +1,48 @@
+#declared-players {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 80vw;
+  height: 34vh;
+  border: 2px solid silver;
+  border-top: 0;
+  border-left: 0;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  overflow: hidden;
+  padding-top: 75px;
+}
+
+#declared-players .peer-meld-container {
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+#declared-players .peer-meld-container.hidden {
+  display: none;
+}
+
+#declared-players .valid-hand-meld {
+  display: flex;
+  border: 2px solid #fff6;
+  background: #fff6;
+  border-radius: 10px;
+  transition: 0.6s ease;
+}
+
+#declared-players .valid-hand-meld.hovered {
+  background: orange;
+  border: 2px solid orange;
+}
+
+#declared-players .valid-hand-meld .player-card {
+  background-size: 2004px 800px;
+  width: 70px;
+  height: 175px;
+  z-index: 2;
+  border: 1px solid #333;
+  border-radius: 10px;
+}

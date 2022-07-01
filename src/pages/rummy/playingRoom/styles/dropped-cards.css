@@ -1,0 +1,13 @@
+#dropped-cards {
+  position: absolute;
+  bottom: 0;
+  left: 21vw;
+  min-width: 145px;
+  height: 200px;
+  background: #fff6;
+  border: 2px solid white;
+  border-radius: 5px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}

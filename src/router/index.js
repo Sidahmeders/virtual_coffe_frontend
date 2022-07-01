@@ -4,7 +4,8 @@ import { lazy } from 'react'
 const AuthPage = lazy(() => import('../pages/auth'))
 const Home = lazy(() => import('../pages/home'))
 const Chess = lazy(() => import('../pages/chess'))
-const Rummy = lazy(() => import('../pages/rummy'))
+const RummyRooms = lazy(() => import('../pages/rummy/rooms'))
+const RummyPlayingRoom = lazy(() => import('../pages/rummy/playingRoom'))
 
 const allRoutes = [
   {
@@ -21,7 +22,11 @@ const allRoutes = [
   },
   {
     path: '/rummy',
-    element: <Rummy />
+    element: <RummyRooms />
+  },
+  {
+    path: '/rummy/room',
+    element: <RummyPlayingRoom />
   }
 ]
 

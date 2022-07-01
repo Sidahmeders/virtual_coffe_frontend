@@ -45,7 +45,7 @@ function makePiece(pieceID, position) {
   IconElement.id = pieceID
   IconElement.setAttribute('position', position)
   IconElement.className = 'chess-piece'
-  IconElement.src = pieceID ? `icons/${pieceID}.png` : ' '
+  IconElement.src = pieceID ? `assets/chess/${pieceID}.png` : ' '
   IconElement.onclick = pieceClickHanlder
   addDraggableEvents(IconElement)
 
